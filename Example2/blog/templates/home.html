@@ -17,12 +17,15 @@
   </head>
 
 <body>
+
+
     <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #A6CCFF">
   <div class="container-fluid">
     <a class="navbar-brand" href="#" style ="font-family: 'Ubuntu', sans-serif;">My Blog</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
@@ -41,19 +44,47 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
+
         </li>
+
+        {% if not user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
         </li>
+        {% endif %}
+
+
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% endif %}
+
+        {% if not user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Signup</a>
+        </li>
+        {% endif %}
+        
+      {% if user.is_authenticated %}
       </ul>
         <a class="btn btn-outline-primary" href="{% url 'new' %}">Post</a>
-       
+        {% endif %}
+
     </div>
   </div>
 </nav>  
 
     <h1 style ="border-style : none; padding:15px; font-family: 'Ubuntu', sans-serif; text-align: center;">💖Dayun's Daily Life💖</h1>
-    <!-- <a href="{% url 'new' %}">새로운 글 생성하기</a> --> 
+     <a href="{% url 'new' %}">새로운 글 생성하기</a>
+     <a href="{% url 'index' %}">투표???</a>
+
+    <br>
+    {% if user.is_authenticated%}
+    아이디: {{user.username}} 닉네임:{{user.nickname}} 대학:{{user.university}} 위치:{{user.location}}
+    
+    {% endif %}
+    <br>
 
 <div style="font-family:'Gamja Flower', cursive; font-size: large;">
 {% for blog in blogs.all %}

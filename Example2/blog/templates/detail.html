@@ -24,22 +24,14 @@
      {% for hashtag in hashtags.all %}
         #{{hashtag}}
         {% endfor %}
-    
     </p>
-
     <br>
-
-
-    
-
     <div style="font-family: 'Gamja Flower', cursive; font-size: xx-large;">
         <a href="{% url 'home' %}" class="btn btn-light" >Home</a>
         <a href="{% url 'edit' blog.id %}" class="btn btn-light">Edit</a>
         <a href="{% url 'delete' blog.id %}" class="btn btn-light">Delete</a>
     </div>
-   
   <hr>
-
     <div style ="border:1px; border-style:none;  padding :15px;" >
     {% for comment in blog.comments.all %}
          <div class="comment">
@@ -51,13 +43,8 @@
     <p>No comments here yet :(</p>
     {% endfor %}
     </div>
-
     <hr>
-
-    
     <a class="btn btn-secondary" href="{% url 'add_comment_to_post' blog.id %}">댓글달기</a>
-    
-      
 </body>
 </html>
 
