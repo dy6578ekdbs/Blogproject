@@ -17,25 +17,29 @@ from django.contrib import admin
 from django.urls import path
 import blog.views as blog
 import account.views as account
-import elections.views
+import elections.views 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('', blog.home, name="home"),
     path("blog/<int:blog_id>", blog.detail, name="detail"),
     path('new/', blog.new, name="new"),
     path('create/', blog.create, name="create"),
+   
     path('edit/<int:blog_id>', blog.edit, name="edit"),
     path('update/<int:blog_id>', blog.update, name="update"),
     path('delete/<int:blog_id>', blog.delete, name="delete"),
-    path('<int:blog_id>/comment', blog.add_comment_to_post, name='add_comment_to_post'),
+    path('<int:blog_id>/comment', blog.add_comment_to_post, name="add_comment_to_post"),
+   
     path('account/login', account.login_view, name="login"),
     path('account/logout', account.logout_view, name="logout"),
     path('account/register', account.register_view, name="register"),
 
-    path('elections', elections.views.index, name="index"),
-    path('elections', elections.views.areas, name="areas"),
-    path('elections', elections.views.polls, name="polls"),
-    path('elections', elections.views.results, name="results"),
+    path('index/', elections.views.index, name="index"),
+    path('index/areas/<str:area>/', elections.views.areas, name="areas"),
+    path('polls/<int:poll_id>/', elections.views.polls, name="polls"),
+    path('areas/<str:area>/results/', elections.views.results,  name="results"),
 
     
 ]

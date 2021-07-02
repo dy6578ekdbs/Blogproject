@@ -89,6 +89,12 @@ DATABASES = {
     }
 }
 
+DATABASE_OPTIONS = {'charset': 'utf8'} #추가
+   
+   
+LANGUAGE_CODE = 'ko-kr' #추가
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -132,3 +138,5 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#'django.db.models.BigAutoField'
+#'django.db.models.AutoField'

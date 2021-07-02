@@ -17,8 +17,8 @@ def areas(request, area):
     today = datetime.datetime.now()
     try :
          #poll = Poll.objects.get(area = area, start_date__lte = today, end_date__gte=today) # get에 인자로 조건을 전달해줍니다. 
-        poll = Poll.objects.get(area = area, start_date__lte =  datetime.date(2021, 7, 1), end_date__gte= datetime.date(2021, 7, 1)) 
-        # poll = Poll.objects.get(area=area)
+         #poll = Poll.objects.get(area = area, start_date__lte =  datetime.date(2021, 7, 1), end_date__gte= datetime.date(2021, 7, 1)) 
+        poll = Poll.objects.get(area=area)
     
         candidates = Candidate.objects.filter(area = area) # Candidate의 area와 매개변수 area가 같은 객체만 불러오기
     except:

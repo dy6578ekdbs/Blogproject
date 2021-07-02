@@ -45,7 +45,22 @@
     </div>
     <hr>
     <a class="btn btn-secondary" href="{% url 'add_comment_to_post' blog.id %}">댓글달기</a>
+  
+
+                
+        <div class="alert alert-success" role="alert" style="font-family: 'Ubuntu', sans-serif;">
+            {% block content %}
+            <h4 class="alert-heading">New Comment</h4>
+            <form method="POST" class="post-form"> {% csrf_token %} 
+            {{ form.as_p }}
+            <hr>
+            <p class="mb-0"><button type="submit" class="btn btn-light">Send</button></p>
+        </form>
+            {% endblock %}
+        </div>
+    
 </body>
+
 </html>
 
 

@@ -11,5 +11,7 @@ urlpatterns = [
     path('', elections.views.index, name="index"),
     path('areas/<str:area>/', elections.views.areas),
     path('polls/<int:poll_id>/', elections.views.polls),
-    path('areas/<str:area>/results', elections.views.results),
+    path('areas/<str:area>/results/', elections.views.results),
+
+
 ]
